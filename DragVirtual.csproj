@@ -59,48 +59,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="avant\Interop\AdviseEntry.cs" />
-    <Compile Include="avant\Interop\ComStream.cs" />
-    <Compile Include="avant\Interop\DataObject.cs" />
-    <Compile Include="avant\Interop\DataObjectExtensions.cs" />
-    <Compile Include="avant\Interop\DataProtection.cs" />
-    <Compile Include="avant\Interop\DataRequestedEventArgs.cs" />
-    <Compile Include="avant\Interop\DragDropHelper.cs" />
-    <Compile Include="avant\Interop\IDragSourceHelper.cs" />
-    <Compile Include="avant\Interop\IDragSourceHelper2.cs" />
-    <Compile Include="avant\Interop\IDropTargetHelper.cs" />
-    <Compile Include="avant\Interop\IShellItem.cs" />
-    <Compile Include="avant\Interop\IShellItemImageFactory.cs" />
-    <Compile Include="avant\Interop\LanguageUtils.cs" />
-    <Compile Include="avant\Interop\NativeMethods.cs" />
-    <Compile Include="avant\Interop\NativeUtilities.cs" />
-    <Compile Include="avant\Interop\Rect.cs" />
-    <Compile Include="avant\Interop\Resource.cs" />
-    <Compile Include="avant\Interop\ResourceCollection.cs" />
-    <Compile Include="avant\Interop\Shell.cs" />
-    <Compile Include="avant\Interop\UnmanagedLibrary.cs" />
-    <Compile Include="avant\Interop\UnorganizedStruct.cs" />
-    <Compile Include="avant\Interop\VirtualFile.cs" />
-    <Compile Include="avant\IO\FileUtil.cs" />
-    <Compile Include="avant\IO\IResource.cs" />
-    <Compile Include="avant\IO\IResourceLibrary.cs" />
-    <Compile Include="avant\IO\IResourceLibraryCache.cs" />
-    <Compile Include="avant\IO\MemoryLibrary.cs" />
-    <Compile Include="avant\IO\MemoryLibraryCache.cs" />
-    <Compile Include="avant\IO\MemoryResource.cs" />
-    <Compile Include="avant\IO\ResourceExtensions.cs" />
-    <Compile Include="avant\UI\BeginDragEventArgs.cs" />
-    <Compile Include="avant\UI\DragDrop.cs" />
-    <Compile Include="avant\UI\EnhancedDragEventArgs.cs" />
-    <Compile Include="avant\UI\FontUtil.cs" />
-    <Compile Include="avant\UI\GlobalHook.cs" />
-    <Compile Include="avant\UI\MouseHookEventArgs.cs" />
-    <Compile Include="avant\UI\NotifyPropertyChangedBase.cs" />
-    <Compile Include="avant\UI\NumericTextBox.cs" />
-    <Compile Include="avant\UI\UIExtensions.cs" />
-    <Compile Include="avant\UI\WindowPreview.cs" />
-    <Compile Include="avant\UI\WindowUtil.cs" />
-    <Compile Include="DragDataObject.cs" />
     <Compile Include="VirtualFileDataObject.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

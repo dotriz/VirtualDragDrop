@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DragVirtual"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="400">
+        Title="MainWindow" Height="250" Width="400">
     <Grid>
 
         <UniformGrid
-            Rows="9"
+            Rows="3"
             TextElement.FontSize="22"
             TextElement.FontWeight="Bold">
 
@@ -25,25 +25,13 @@
                 </Style>
             </UniformGrid.Resources>
 
-            <ContentControl
-                Content="Drag local file"
-                FontSize="18"
-                VerticalAlignment="Center"
-                Margin="20"/>
-            <Label
-                x:Name="LocalFile"
-                Content="Local File"/>
+            
             <ContentControl
                 Content="Drag virtual file"
                 FontSize="18"
                 VerticalAlignment="Center"
                 Margin="20"/>
-            <Label
-                x:Name="Text"
-                Content="Text only"/>
-            <Label
-                x:Name="TextUrl"
-                Content="Text and URL"/>
+            
             <Label
                 x:Name="VirtualFile"
                 Content="Virtual File" />
@@ -52,14 +40,7 @@
                 x:Name="VirtualFile2"
                 Content="Virtual File 2" />
 
-            <Label
-                x:Name="VirtualFileAvant"
-                Content="Virtual File Avant" />
-
-
-            <Label
-                x:Name="TextUrlVirtualFile"
-                Content="Text, URL, and a virtual file!"/>
+            
         </UniformGrid>
 
         <Grid
