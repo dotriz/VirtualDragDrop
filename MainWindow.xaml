@@ -5,55 +5,50 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DragVirtual"
         mc:Ignorable="d"
-        Title="MainWindow" Height="250" Width="400">
+        Title="MainWindow" Height="250" Width="300"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <Style x:Key="borderStyle" TargetType="Border">
+            <Setter Property="Margin" Value="0,15,0,0" />
+            <Setter Property="Padding" Value="10,0,10,0" />
+            <Setter Property="Background" Value="#2285fd" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
+        <Style x:Key="labelStyle" TargetType="Label">
+            <Setter Property="Foreground" Value="#ffffff" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+    </Window.Resources>
+
     <Grid>
 
-        <UniformGrid
-            Rows="3"
-            TextElement.FontSize="22"
-            TextElement.FontWeight="Bold">
+        <StackPanel Orientation="Vertical" Margin="12">
 
-            <UniformGrid.Resources>
-                <Style TargetType="{x:Type Label}">
-                    <Setter Property="Background" Value="CornflowerBlue"/>
-                    <Setter Property="Foreground" Value="White"/>
-                    <Setter Property="BorderBrush" Value="DarkBlue"/>
-                    <Setter Property="BorderThickness" Value="1"/>
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                    <Setter Property="VerticalContentAlignment" Value="Center"/>
-                    <Setter Property="Margin" Value="10"/>
-                </Style>
-            </UniformGrid.Resources>
+            <TextBlock Text="Drag virtual file" FontSize="24" FontWeight="Bold" />
 
-            
-            <ContentControl
-                Content="Drag virtual file"
-                FontSize="18"
-                VerticalAlignment="Center"
-                Margin="20"/>
-            
-            <Label
-                x:Name="VirtualFile"
-                Content="Virtual File" />
+            <TextBlock Text="Drag file or right click to copy to clipboard" FontSize="14" />
 
-            <Label
-                x:Name="VirtualFile2"
-                Content="Virtual File 2" />
+            <Border Style="{StaticResource borderStyle}">
+                <Label x:Name="VirtualFile" Style="{StaticResource labelStyle}" Content="Virtual File - 26b" />
+            </Border>
 
-            
-        </UniformGrid>
+            <Border Style="{StaticResource borderStyle}">
+                <Label x:Name="VirtualFile2" Style="{StaticResource labelStyle}" Content="Virtual File - 12mb" />
+            </Border>
 
-        <Grid
-            x:Name="BusyScreen"
-            Background="LightGray"
-            Visibility="Collapsed">
-            <StackPanel
-                VerticalAlignment="Center"
-                Margin="50">
-                <Viewbox>
-                    <TextBlock Text="Busy..."/>
-                </Viewbox>
-                <ProgressBar IsIndeterminate="True" Height="20"/>
+            <TextBlock x:Name="txtMessage" Text="" 
+                       HorizontalAlignment="Center" Foreground="Red" FontSize="12" Margin="0,10,0,0" />
+
+        </StackPanel>
+
+        <Grid x:Name="BusyScreen" Background="White" Visibility="Collapsed">
+            <StackPanel VerticalAlignment="Center" Margin="50">
+                <TextBlock Text="Please wait..." FontSize="24"/>
+                <ProgressBar IsIndeterminate="True" Height="10"/>
             </StackPanel>
         </Grid>
 

@@ -14,21 +14,19 @@ using System.Windows.Media.Imaging;
 
 namespace DragVirtual
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        // From Windows SDK header files
-        private const string CFSTR_INETURLA = "UniformResourceLocator";
+        public static MainWindow Instance { get; private set; }
+
 
         public MainWindow()
         {
             InitializeComponent();
+            Instance = this;
 
             // Attach to interesting events
-            VirtualFile.MouseLeftButtonDown += new MouseButtonEventHandler(VirtualFile_MouseButtonDown);
-            VirtualFile2.MouseLeftButtonDown += new MouseButtonEventHandler(VirtualFile2_MouseButtonDown);
+            VirtualFile.MouseDown += new MouseButtonEventHandler(VirtualFile_MouseButtonDown);
+            VirtualFile2.MouseDown += new MouseButtonEventHandler(VirtualFile2_MouseButtonDown);
         }
 
         private void VirtualFile_MouseButtonDown(object sender, MouseButtonEventArgs e)
@@ -66,7 +64,11 @@ namespace DragVirtual
 
         private void VirtualFile2_MouseButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var virtualFileDataObject = new VirtualFileDataObject();
+            //var virtualFileDataObject = new VirtualFileDataObject();
+            var virtualFileDataObject = new VirtualFileDataObject(
+                // BeginInvoke ensures UI operations happen on the right thread
+                (vfdo) => Dispatcher.BeginInvoke((Action)(() => BusyScreen.Visibility = Visibility.Visible)),
+                (vfdo) => Dispatcher.BeginInvoke((Action)(() => BusyScreen.Visibility = Visibility.Collapsed)));
 
             virtualFileDataObject.SetData(new VirtualFileDataObject.FileDescriptor[]
             {
@@ -93,7 +95,28 @@ namespace DragVirtual
         {
             try
             {
-                VirtualFileDataObject.DoDragDrop(dragSource, virtualFileDataObject, allowedEffects);
+                if (button == MouseButton.Left)
+                {
+                    // Left button is used to start a drag/drop operation
+                    VirtualFileDataObject.DoDragDrop(dragSource, virtualFileDataObject, allowedEffects);
+                }
+                else if (button == MouseButton.Right)
+                {
+                    // Right button is used to copy to the clipboard
+                    // Communicate the preferred behavior to the destination
+                    virtualFileDataObject.PreferredDropEffect = allowedEffects;
+                    Clipboard.SetDataObject(virtualFileDataObject);
+
+                    Instance.txtMessage.Text = "File copied to clipboard. Use Ctrl+V to paste";
+                    System.Threading.Tasks.Task.Delay(3000).ContinueWith((_) => {
+                        Application.Current.Dispatcher.Invoke(
+                        () =>
+                        {
+                            Instance.txtMessage.Text = "";
+                        });
+                        
+                    });
+                }
             }
             catch (COMException)
             {
