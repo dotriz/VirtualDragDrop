@@ -93,7 +93,7 @@ namespace DragVirtual
                         {
                             using(var webClient = new WebClient())
                             {
-                                var data = webClient.DownloadData("https://dotriz.com/tools/test.zip");
+                                var data = webClient.DownloadData("https://github.com/dotriz/VirtualDragDrop/blob/master/test.zip?raw=true");
                                 stream.Write(data, 0, data.Length);
                             }
 
