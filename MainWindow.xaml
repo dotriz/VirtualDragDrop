@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DragVirtual"
         mc:Ignorable="d"
-        Title="MainWindow" Height="250" Width="300"
+        Title="DragDrop" Height="340" Width="300"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
 
@@ -28,7 +28,13 @@
 
         <StackPanel Orientation="Vertical" Margin="12">
 
-            <TextBlock Text="Drag virtual file" FontSize="24" FontWeight="Bold" />
+            <TextBlock Text="Drag local file" FontSize="20" FontWeight="Bold" />
+
+            <Border Style="{StaticResource borderStyle}">
+                <Label x:Name="LocalFile" Style="{StaticResource labelStyle}" Content="Local File" />
+            </Border>
+            
+            <TextBlock Text="Drag virtual file" FontSize="20" FontWeight="Bold" Margin="0,20,0,0" />
 
             <TextBlock Text="Drag file or right click to copy to clipboard" FontSize="14" />
 

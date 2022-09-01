@@ -25,8 +25,21 @@ namespace DragVirtual
             Instance = this;
 
             // Attach to interesting events
+            LocalFile.MouseLeftButtonDown += new MouseButtonEventHandler(LocalFile_MouseButtonDown);
             VirtualFile.MouseDown += new MouseButtonEventHandler(VirtualFile_MouseButtonDown);
             VirtualFile2.MouseDown += new MouseButtonEventHandler(VirtualFile2_MouseButtonDown);
+        }
+
+        private void LocalFile_MouseButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            string filePath = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\flower.jpg";
+            // get IDataObject from the Shell so it can handle more formats
+            var dataObject = DragDataObject.GetFileDataObject(filePath);
+
+            // add the thumbnail to the data object
+            DragDataObject.AddPreviewImage(dataObject, filePath);
+
+            var result = DragDrop.DoDragDrop(this, dataObject, DragDropEffects.Copy);
         }
 
         private void VirtualFile_MouseButtonDown(object sender, MouseButtonEventArgs e)
