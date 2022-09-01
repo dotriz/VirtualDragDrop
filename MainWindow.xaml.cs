@@ -32,7 +32,7 @@ namespace DragVirtual
 
         private void LocalFile_MouseButtonDown(object sender, MouseButtonEventArgs e)
         {
-            string filePath = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\flower.jpg";
+            string filePath = System.IO.Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\assets\\flower.jpg";
             // get IDataObject from the Shell so it can handle more formats
             var dataObject = DragDataObject.GetFileDataObject(filePath);
 
@@ -93,7 +93,7 @@ namespace DragVirtual
                         {
                             using(var webClient = new WebClient())
                             {
-                                var data = webClient.DownloadData("https://github.com/dotriz/VirtualDragDrop/blob/master/test.zip?raw=true");
+                                var data = webClient.DownloadData("https://github.com/dotriz/VirtualDragDrop/blob/master/assets/test.zip?raw=true");
                                 stream.Write(data, 0, data.Length);
                             }
 
